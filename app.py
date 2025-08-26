@@ -12,7 +12,7 @@ st.title("🌿 PlantVillage Disease Classifier (MobileNetV2)")
 
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model(best.keras)
+    model = tf.keras.models.load_model('best.keras')
     labels = json.load(open('labels.json'))
     class_names = labels["class_names"]
     return model, class_names
