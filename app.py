@@ -8,7 +8,7 @@ import os
 
 st.set_page_config(page_title="PlantVillage MobileNetV2", layout="centered")
 
-st.title("🌿 PlantVillage Disease Classifier (MobileNetV2)")
+st.title("PlantVillage Disease Classifier (MobileNetV2)")
 
 @st.cache_resource
 def load_model(model_dir):
