@@ -11,15 +11,17 @@ st.set_page_config(page_title="PlantVillage MobileNetV2", layout="centered")
 st.title("🌿 PlantVillage Disease Classifier (MobileNetV2)")
 
 @st.cache_resource
-def load_model():
+def load_model(model_dir):
     model = tf.keras.models.load_model('best.keras')
     labels = json.load(open('labels.json'))
     class_names = labels["class_names"]
     return model, class_names
 
+model_dir = st.text_input("Path to SavedModel directory", value="best.keras")
+
 if st.button("Load Model"):
     try:
-        model, class_names = load_model()
+        model, class_names = load_model(model_dir)
         st.success(f"Loaded model with {len(class_names)} classes.")
         st.session_state["model_loaded"] = True
         st.session_state["class_names"] = class_names
